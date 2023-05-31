@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import LoginForm from './components/Common/LoginForm';
 import UserAccount from './components/MainFlow/UserAccount';
+import NContainer from './components/MainFlow/n-container';
 
 const theme = {
   ...DefaultTheme,
@@ -17,8 +18,7 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      <UserAccount />
+      <NContainer />
     </PaperProvider>
   );
 }
-
