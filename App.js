@@ -1,18 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LoginForm from './components/LoginForm';
+import { StyleSheet, View } from 'react-native';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import LoginForm from './components/Common/LoginForm';
+import UserAccount from './components/MainFlow/UserAccount';
+
+const theme = {
+  ...DefaultTheme,
+  flex: 1,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#DC3023',
+    accent: '#1783EF',
+  },
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <LoginForm />
-    </View>
+    <PaperProvider theme={theme}>
+      <UserAccount />
+    </PaperProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    
-    flex: 1,
-  },
-});
