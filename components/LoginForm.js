@@ -1,45 +1,78 @@
 import React, { useState } from 'react';
-import { TextInput, View, Text, Button, Image } from 'react-native';
-import Checkbox from 'expo-checkbox';
+import { View, Text, Image, SafeAreaView, Linking } from 'react-native';
+import { TextInput, Checkbox, Button } from 'react-native-paper';
 
 const LoginForm = () => {
 
-    const [isChecked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
+    const [login, SetLogin] = useState({
+        username: "santos.dummond",
+        password: "123456"
+    });
+
+    const handleCheckboxToggle = () => {
+        setChecked(!checked);
+    };
+
+    const handlePress = async () => {
+        const url = 'https://example.com';
+        const supported = await Linking.canOpenURL(url);
+
+        if (supported) {
+            await Linking.openURL(url);
+        } else {
+            console.log("Don't know how to open URI: " + url);
+        }
+    };
 
     return (
-        <View style={{ display: 'flex', flex: 1 }}>
-            <View style={{ backgroundColor: 'blue', alignItems: 'center' }}>
+        <SafeAreaView style={{ display: 'flex', flex: 1, justifyContent: 'center', margin: 10 }}>
+            <View style={{ backgroundColor: 'blue', alignItems: 'center', margin: 60 }}>
                 <Image
-                    style={{ width: 100, height: 100 }}
+                    style={{ width: 120, height: 120, borderRadius: 5 }}
                     source={require('../assets/logo.png')} />
             </View>
-            <View style={{ backgroundColor: 'orange', alignItems: 'center' }}>
+            <View style={{ backgroundColor: 'orange', alignItems: 'center', height: 50 }}>
                 <Text style={{ fontSize: 25 }}>California Water Use</Text>
             </View>
-            <View style={{ backgroundColor: 'gray' }}>
-                <Text>Username</Text>
-                <TextInput />
-                <Text>Password</Text>
-                <TextInput />
-                <Checkbox
-                    style={{ margin: 10 }}
-                    value={isChecked}
-                    onValueChange={setChecked}
-                    color={isChecked ? '#4630EB' : undefined}
-                />
-
-                <Text >Remember me</Text>
-                <Text >Forgot Password?</Text>
+            <View style={{ backgroundColor: 'gray', marginTop: 40, marginBottom: 40 }}>
+                <View style={{ marginBottom: 20 }}>
+                    <TextInput
+                        label="Username"
+                        value={login.username}
+                        onChangeText={text => setText(text)}
+                    />
+                </View>
+                <View style={{ marginBottom: 20 }}>
+                    <TextInput
+                        label="Password"
+                        value={login.password}
+                        onChangeText={text => setText(text)}
+                    />
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                    <Checkbox.Android
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={handleCheckboxToggle}
+                    />
+                    <Text>Remember me</Text>
+                    <Button mode="text" onPress={() => console.log('Forgot password?')}>
+                        Forgot password?
+                    </Button>
+                </View>
 
             </View>
-            <View style={{ backgroundColor: 'purple', height: 50 }}>
+            <View >
                 <Button
-                    title="Press me"
-                    onPress={() => console.warn('Simple Button pressed')}
-                />
+                    mode="contained"
+                    onPress={() => console.log('Login')}
+                    style={{ borderRadius: 5, height: 70, justifyContent: 'center' }}
+                >
+                    Login
+                </Button>
             </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
