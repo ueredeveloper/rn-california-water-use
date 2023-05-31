@@ -21,16 +21,15 @@ const UserAccount = () => {
                     style={styles.input}
                     label="Telephone"
                     value={'987-654555'}
-                    onChangeText={(text) => console.warn('telephone')}
+                    onChangeText={(text) => console.warn('telephon')}
                 />
             </View>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={styles.buttonContainer}>
 
                 <Button
                     mode="contained"
                     onPress={() => console.log('Save')}
                     style={styles.buttons}
-
                 >
                     Back
                 </Button>
@@ -38,8 +37,6 @@ const UserAccount = () => {
                     mode="contained"
                     onPress={() => console.log('Savessss')}
                     style={styles.buttons}
-
-
                 >
                     Save
                 </Button>
@@ -51,11 +48,11 @@ const UserAccount = () => {
 
 const styles = StyleSheet.create(
     {
-        container: { display: 'flex', flex: 1, marginTop: 100 },
-        buttons: { margin: 10, borderRadius: 5, height: 50, justifyContent: 'center' },
-        inputContainer: {
+        container: { display: 'flex', flex: 1, marginTop: 70, margin: 10 },
+        inputContainer: { marginTop: 10, marginBottom: 10, backgroundColor: 'green' },
+        buttonContainer: { flexDirection: 'row', marginTop: 10 },
+        buttons: { borderRadius: 5, height: 50, justifyContent: 'center', marginRight: 25 },
 
-        }
     }
 )
 
