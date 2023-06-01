@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from 'react-native-paper';
 
-function Home(props) {
+function Home({navigation}) {
 
     const address = "Rua 10"
 
@@ -15,18 +15,27 @@ function Home(props) {
             <Text style={{ fontSize: 24 }}> Endereço: {address}</Text>
             <Button
                 mode="contained"
-                onPress={() => props.navigation.navigate('Details')}
-            > Detalhes do endereço</Button>
+                onPress={() => navigation.navigate('Details')}
+                style={{margin: 10}}
+            > Enviar parâmetros ao chamar o componente</Button>
             <Button
                 mode="contained"
                 onPress={() => {
                     /* 1. Navigate to the Details route with params */
-                    props.navigation.navigate('DetailsWithRouteParam', {
-                        title: 'showing title param'
+                    navigation.navigate('DetailsWithRouteParam', {
+                        details: 'Rua, 10, casa 13, Sobradinho - DF - Brasil '
                     });
                 }}
-            > Ver detalhes com Parametro</Button>
-            
+                style={{margin: 10}}
+            > Enviar parâmetros pela função onPress() </Button>
+            <Button
+                mode="contained"
+                onPress={() =>
+                    navigation.navigate('Profile', { name: 'Custom profile header' })
+                  }
+                  style={{margin: 10}}
+            > Profile</Button>
+
         </View>
     );
 }
@@ -58,18 +67,42 @@ function DetailsWithRouteParam({ route, navigation }) {
     )
 }
 
+function ProfileScreen({ navigation }) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Profile screen</Text>
+            <Button 
+            mode="contained"
+            onPress={() => navigation.goBack()} 
+            style={{margin: 10}}> Go back</Button>
+        </View>
+    );
+}
+
+
 const Stack = createNativeStackNavigator();
+
+
 
 function NContainer() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    // utilizando parametros no título
+                    options={{ title: "My Home" }} />
                 <Stack.Screen name="Details">
-                    {(props) => <DetailsScreen {...props} details={"Rua, 10, casa 13, Sobradinho - DF"} />}
+                    {(props) => <DetailsScreen {...props} details={"Rua, 10, casa 13"} />}
                 </Stack.Screen>
 
                 <Stack.Screen name="DetailsWithRouteParam" component={DetailsWithRouteParam} />
+                <Stack.Screen
+                    name="Profile"
+                    component={ProfileScreen}
+                    options={({ route }) => ({ title: route.params.name })}
+                />
 
             </Stack.Navigator>
         </NavigationContainer>
