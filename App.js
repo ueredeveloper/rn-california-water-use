@@ -2,6 +2,9 @@ import { StyleSheet, View } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import LoginForm from './components/Common/LoginForm';
 import UserAccount from './components/MainFlow/UserAccount';
+import { Menu, Appbar } from 'react-native-paper';
+
+import MenuIcon from './components/Common/MenuIcon';
 
 const theme = {
   ...DefaultTheme,
