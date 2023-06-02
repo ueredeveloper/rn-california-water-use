@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from 'react-native';
-import { Button, Menu, Divider, PaperProvider } from 'react-native-paper';
+import { Menu, Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'react-native-paper';
 
@@ -23,7 +23,7 @@ export default MenuIcon = () => {
             <Menu
                 visible={visible}
                 onDismiss={closeMenu}
-                anchor={<Icon name="menu" size={40} color={colors.primary} onPress={openMenu}/>}
+                anchor={<Icon name="menu" size={40} color={colors.primary} onPress={openMenu} />}
             >
                 <Menu.Item onPress={() => { }} title="Item 1" />
                 <Menu.Item onPress={() => { }} title="Item 2" />
