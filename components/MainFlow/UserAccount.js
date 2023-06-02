@@ -11,7 +11,7 @@ const UserAccount = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-           <HeaderContainer title={'Cadastro de Usuário'}/>
+            <HeaderContainer title={'Cadastro de Usuário'} />
             <Card style={styles.content}>
                 <Card.Content>
                     <View >
