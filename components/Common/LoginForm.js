@@ -4,7 +4,7 @@ import { TextInput, Checkbox, Button } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from 'react-native-paper';
 
-const LoginForm = () => {
+const LoginForm = ({navigation}) => {
 
     const [checked, setChecked] = useState(false);
     const [login, setLogin] = useState({

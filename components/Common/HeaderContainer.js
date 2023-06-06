@@ -3,15 +3,15 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import MenuIcon from './MenuIcon';
 
-const HeaderContainer = (props) => {
-    const { colors } = useTheme();
+const HeaderContainer = (props, {navigation}) => {
+
     const { title } = props;
 
     return (
         <View style={styles.headerContainer}>
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
-                    <MenuIcon />
+                    <MenuIcon navigation={navigation}/>
                 </View>
                 <View style={styles.headerContent}>
                     <Text style={styles.title}>{title}</Text>

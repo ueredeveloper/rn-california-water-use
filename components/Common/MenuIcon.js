@@ -4,7 +4,9 @@ import { Menu, Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'react-native-paper';
 
-export default MenuIcon = () => {
+export default MenuIcon = ({navigation}) => {
+
+    console.log(navigation)
 
     const [visible, setVisible] = React.useState(false);
 
@@ -25,8 +27,8 @@ export default MenuIcon = () => {
                 onDismiss={closeMenu}
                 anchor={<Icon name="menu" size={40} color={colors.primary} onPress={openMenu} />}
             >
-                <Menu.Item onPress={() => { }} title="Item 1" />
-                <Menu.Item onPress={() => { }} title="Item 2" />
+                <Menu.Item   onPress={() => navigation.navigate('UserAccount')} title="Usuário" />
+                <Menu.Item   onPress={() => navigation.navigate('LoginForm')} title="Login" />
                 <Divider />
                 <Menu.Item onPress={() => { }} title="Item 3" />
             </Menu>

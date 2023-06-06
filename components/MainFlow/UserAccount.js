@@ -6,7 +6,7 @@ import MenuIcon from '../Common/MenuIcon';
 import HeaderContainer from '../Common/HeaderContainer';
 
 
-const UserAccount = () => {
+const UserAccount = ({navigation}) => {
     const { colors } = useTheme();
 
     return (
@@ -87,5 +87,6 @@ const styles = StyleSheet.create(
 
     }
 )
+
 
 export default UserAccount;
